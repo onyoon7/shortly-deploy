@@ -39,12 +39,6 @@ module.exports = function(grunt) {
       }
     },
 
-    eslint: {
-      target: [
-        // Add list of files to lint here
-      ]
-    },
-
     cssmin: {
       target: {
         files: {
@@ -84,6 +78,8 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-mocha-test');
   grunt.loadNpmTasks('grunt-shell');
   grunt.loadNpmTasks('grunt-nodemon');
+
+
 
   grunt.registerTask('server-dev', function (target) {
     // Running nodejs in a different process and displaying output on the main console
@@ -127,8 +123,5 @@ module.exports = function(grunt) {
     // add your deploy tasks here
   ]);
 
-<<<<<<< HEAD
-=======
   grunt.registerTask('default', ['concat', 'uglify', 'cssmin']);
->>>>>>> 0f7354d6a57d7301b52bba95630ffe27c3845023
 };
