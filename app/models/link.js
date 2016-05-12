@@ -1,5 +1,4 @@
 var db = require('../config');
-var crypto = require('crypto');
 var Links = require("../schema/linkSchema");
 var mongoose = require("mongoose");
 

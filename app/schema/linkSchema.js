@@ -1,5 +1,6 @@
 var mongoose = require("mongoose");
 var bcrypt = require('bcrypt-nodejs');
+var crypto = require('crypto');
 var Schema = mongoose.Schema;
 
 
@@ -12,10 +13,11 @@ var linkSchema = new Schema ({
   date : {type: Date, default: Date.now}
 });
 
-// linkSchema.pre('save',function(){
-//   var shasum = crypto.createHash('sha1');
-//   shasum.update(model.get('url'));
-//   model.set('code', shasum.digest('hex').slice(0, 5));
-// });
+linkSchema.pre('save',function(next){
+  var shasum = crypto.createHash('sha1');
+  shasum.update(this.url);
+  this.code = shasum.digest('hex').slice(0, 5);
+  next();
+});
 
 module.exports = linkSchema;

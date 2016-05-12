@@ -6,6 +6,13 @@ var Users = require("../schema/userSchema");
 
 var User = mongoose.model('User', Users);
 
+
+User.prototype.comparePassword = function(attemptedPassword, callback) {
+	bcrypt.compare(attemptedPassword, this.password, function(err, isMatch) {
+    	callback(isMatch);
+  });
+}
+
 // var User = db.Model.extend({
 //   tableName: 'users',
 //   hasTimestamps: true,
